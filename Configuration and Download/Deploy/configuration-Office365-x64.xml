@@ -1,0 +1,55 @@
+<!-- OFFICE 365 DEPLOYMENT 2018-09-30
+
+1 - Download the Office 365 Deployment Tool to deploy Office 365 to client machines on the network...
+     https://www.microsoft.com/en-us/download/details.aspx?id=49117
+
+2 - Install the deployment tool to the deployment server in a place that make sense to you, for example...
+      C:\Deploy
+
+3 - Set the deployment's configuration parameters for all applicable Office 365 ProPlus and Business apps
+    (Office, Visio Pro for O365, Project Pro for O365, etc.) within in the <configuration></configuration>
+    tags of the client configuration xml file, example config...
+      C:\Deploy>configuration-Office365-x64.xml
+
+        <Configuration>
+          <Add SourcePath="\\Server\Share"
+              OfficeClientEdition="32"
+              Channel="Broad" >
+            <Product ID="O365ProPlusRetail">
+              <Language ID="en-us" />
+              <Language ID="ja-jp" />
+            </Product>
+            <Product ID="VisioProRetail">
+              <Language ID="en-us" />
+              <Language ID="ja-jp" />
+            </Product>
+          </Add>
+          <Updates Enabled="TRUE"
+                  UpdatePath="\\Server\Share"
+                  Channel="Broad" />
+          <Display Level="None" AcceptEULA="TRUE" />
+          <Logging Level="Standard" Path="%temp%" />
+        </Configuration>
+
+4 - Open a Command Prompt and go to server location where the Deployment Tool was installed...
+      C:\Deploy>
+
+5 - Run the following command from to download a copy of Office 365's Installation files
+      C:\Deploy>setup.exe /download configuration-Office365-x64.xml
+
+6 - The fies will be saved to that directory in an "Office" folder
+      C:\Deploy\Office
+
+7 - When the download is complete run the following command to launch setup
+      C:\Deploy>setup.exe /configure configuration-Office365-x64.xml
+
+For more see: https://docs.microsoft.com/en-us/DeployOffice/index
+-->
+
+<Configuration>
+	<Add OfficeClientEdition="64" Channel="Monthly">
+	 <Product ID="O365ProPlusRetail">
+	   <Language ID="en-us" />
+	  </Product>
+	</Add>
+	</Configuration>
