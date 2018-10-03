@@ -1,2 +1,2 @@
-# O365_Deployment
-Deploy Office 365
+# O365Administration
+Deploy Office 365 ProPlus Desktop Applications
